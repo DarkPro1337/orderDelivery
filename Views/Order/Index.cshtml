@@ -1,0 +1,69 @@
+﻿@model IEnumerable<orderDelivery.Models.OrderModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список заказов</h1>
+
+<p>
+    <a asp-action="Create">Создать заказ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                № заказа
+            </th>
+            <th>
+                Город отправителя
+            </th>
+            <th>
+                Адрес отправителя
+            </th>
+            <th>
+                Город получателя
+            </th>
+            <th>
+                Адрес получателя
+            </th>
+            <th>
+                Вес посылки
+            </th>
+            <th>
+                Дата забора
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SenderAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipientCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecipientAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PackageWeight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PickupDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-guid="@item.ID">Редактировать</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
